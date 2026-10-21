@@ -1,8 +1,7 @@
-markdown
 # 🔍 DeepFake Detective: AI-Powered Image Authenticity Detector
 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://www.tensorflow.org/)
-[![Accuracy](https://img.shields.io/badge/Accuracy-99.996%25-brightgreen.svg)](https://github.com/yourusername/project)
+[![Accuracy](https://img.shields.io/badge/Accuracy-99.996%25-brightgreen.svg)](https://github.com/Ananya419/DeepFakeDetection)
 [![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)
 
 ## 📋 Table of Contents
@@ -20,14 +19,15 @@ markdown
 ```
 /project-folder
 ├── app.py                # Flask backend server
-├── requirements.txt      # Python dependencies
+├── model.py              # CNN training script
+├── Data_Preparation.py   # Dataset loading and preprocessing
+├── requirement.txt       # Python dependencies
 ├── saved_model/         # TensorFlow SavedModel directory
 ├── templates/
 │   └── index.html       # Main webpage template
 ├── static/
-│   ├── style.css        # CSS styling
-│   └── script.js        # Frontend JavaScript
-└── README.md            # Project documentation
+│   └── style.css        # CSS styling
+└── Readme.md            # Project documentation
 ```
 
 ## 🎯 Overview
@@ -73,7 +73,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 3. **Install Dependencies**
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 4. **Run the Application**
@@ -99,17 +99,16 @@ python app.py
 
 ### Image Analysis Endpoint
 ```
-POST /analyze
+POST /predict
 Content-Type: multipart/form-data
 
 Parameters:
-- image: File (required)
+- file: File (required)
 
 Response:
 {
-    "result": "real/fake",
-    "confidence": float,
-    "processing_time": float
+    "fake_probability": float,   // percentage, 0-100
+    "real_probability": float    // percentage, 0-100
 }
 ```
 
@@ -122,7 +121,7 @@ For support or inquiries:
 - Email: raunakd511@gmail.com
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 🔧 Requirements
 ```
